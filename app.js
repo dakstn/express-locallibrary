@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 // route modules
 var index = require('./routes/index');
 var users = require('./routes/users');
+var catalog = require('./routes/catalog'); // import routes for the catalog area of the site
 
 // express application object
 var app = express();
@@ -31,8 +32,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// add routes to the middleware chain
 app.use('/', index);
 app.use('/users', users);
+app.use('/catalog', catalog);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
