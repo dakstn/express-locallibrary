@@ -10,8 +10,16 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var catalog = require('./routes/catalog'); // import routes for the catalog area of the site
 
+// compression and security middleware modules
+var compression = require('compression');
+var helmet = require('helmet');
+
 // express application object
 var app = express();
+
+// setup compression and security middleware
+app.use(compression());
+app.use(helmet());
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
