@@ -23,7 +23,7 @@ app.use(helmet());
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://librarian:password@ds149373.mlab.com:49373/local_library'; // https://mlab.com
+var mongoDB = process.env.MONGODB_URI || 'mongodb://librarian:password@ds149373.mlab.com:49373/local_library'; // https://mlab.com
 mongoose.connect(mongoDB);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
